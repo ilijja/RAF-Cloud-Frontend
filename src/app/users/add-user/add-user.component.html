@@ -1,0 +1,40 @@
+<!-- Stilizovana forma -->
+<form [formGroup]="addUserForm" (ngSubmit)="onSubmit()" id="styled-form">
+  
+  <div>
+    <label for="firstname">First Name</label>
+    <input id="firstname" formControlName="firstname">
+  </div>
+  
+  <div>
+    <label for="lastname">Last Name</label>
+    <input id="lastname" formControlName="lastname">
+  </div>
+  
+  <div>
+    <label for="username">Username</label>
+    <input id="username" formControlName="username">
+  </div>
+  
+  <div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email">
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password" formControlName="password">
+  </div>
+
+  <div class="card flex justify-content-center">
+    <p-listbox [options]="roles"
+               formControlName="roles"
+               optionLabel="name"
+               [multiple]="true"
+               [metaKeySelection]="false">
+    </p-listbox>
+  </div>
+
+  <p-button type="submit" [disabled]="addUserForm.invalid">Add User</p-button>
+
+</form>

@@ -1,0 +1,28 @@
+<div class="container">
+
+<div class="card">
+    <p-table [value]="machines" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Active</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-machine>
+            <tr>
+                <td>{{machine.name}}</td>
+                <td>{{machine.active}}</td>
+                <td>{{machine.status}}</td>
+                <td>
+                    <p-button icon="pi pi-play" class="btn round-button" (click)="startMachine(machine.id)"></p-button>
+                    <p-button icon="pi pi-stop" class="btn round-button" (click)="stopMachine(machine.id)"></p-button>
+                    <p-button icon="pi pi-refresh" class="btn round-button" (click)="restartMachine(machine.id)"></p-button>
+                    <p-button icon="pi pi-trash" class="btn round-button" (click)="destroyMachine(machine.id)"></p-button> 
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</div>

@@ -1,0 +1,32 @@
+<form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label for="firstname">First Name</label>
+      <input id="firstname" formControlName="firstname">
+      <div *ngIf="editUserForm.get('firstname')?.invalid && editUserForm.get('firstname')?.touched">
+        First Name is required
+      </div>
+    </div>
+  
+    <div>
+      <label for="lastname">Last Name</label>
+      <input id="lastname" formControlName="lastname">
+      <div *ngIf="editUserForm.get('lastname')?.invalid && editUserForm.get('lastname')?.touched">
+        Last Name is required
+      </div>
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input id="email" formControlName="email">
+        <div *ngIf="editUserForm.get('email')?.invalid && editUserForm.get('email')?.touched">
+          Email is required
+        </div>
+      </div>
+  
+    
+  
+    <p-button type="submit" [disabled]="editUserForm.invalid">Izmeni</p-button>
+    
+  </form>
+  

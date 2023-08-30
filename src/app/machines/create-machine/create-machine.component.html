@@ -1,0 +1,11 @@
+<form [formGroup]="addMachineForm" (ngSubmit)="onSubmit()" id="styled-form">
+
+    <div class="p-field">
+      <label for="name">Machine name</label>
+      <input id="name" pInputText formControlName="name">
+    </div>
+  
+    <p-button type="submit" label="Submit"></p-button>
+  
+  </form>
+  
