@@ -14,12 +14,13 @@
             <tr>
                 <td>{{machine.name}}</td>
                 <td>{{machine.active}}</td>
-                <td>{{machine.status}}</td>
+                <td><span *ngIf="!loading">{{machine.status}}</span> <i *ngIf="loading" class="pi pi-spin pi-spinner" style="font-size: 0.8rem"></i></td>
                 <td>
-                    <p-button icon="pi pi-play" class="btn round-button" (click)="startMachine(machine.id)"></p-button>
-                    <p-button icon="pi pi-stop" class="btn round-button" (click)="stopMachine(machine.id)"></p-button>
-                    <p-button icon="pi pi-refresh" class="btn round-button" (click)="restartMachine(machine.id)"></p-button>
-                    <p-button icon="pi pi-trash" class="btn round-button" (click)="destroyMachine(machine.id)"></p-button> 
+                    <p-toast></p-toast>
+                    <p-button *ngIf="machine.active" icon="pi pi-play" class="btn round-button" (click)="startMachine(machine)"></p-button>
+                    <p-button *ngIf="machine.active" icon="pi pi-stop" class="btn round-button" (click)="stopMachine(machine)"></p-button>
+                    <p-button *ngIf="machine.active" icon="pi pi-refresh" class="btn round-button" (click)="restartMachine(machine)"></p-button>
+                    <p-button *ngIf="machine.active" icon="pi pi-trash" class="btn round-button" (click)="destroyMachine(machine)"></p-button> 
                 </td>
             </tr>
         </ng-template>

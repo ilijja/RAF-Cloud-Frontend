@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class MachineService {
 
   private baseUrl: string = 'http://localhost:8080/api/machine';
@@ -27,7 +29,7 @@ export class MachineService {
   }
 
   destroyMachine(id: number): Observable<HttpResponse<any>>{
-    return this.http.post<any>(`${this.baseUrl}/destroy/${id}}` , {} ,{headers: this.getHeaders(), observe: 'response' });
+    return this.http.post<any>(`${this.baseUrl}/destroy/${id}` , {} ,{headers: this.getHeaders(), observe: 'response' });
   }
 
   restartMachine(id: number): Observable<HttpResponse<any>>{

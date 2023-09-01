@@ -15,12 +15,14 @@ import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { MenubarModule } from 'primeng/menubar';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateMachineComponent } from './machines/create-machine/create-machine.component';
 import { ExceptionComponent } from './machines/exception/exception.component';
 import { MachineListComponent } from './machines/machine-list/machine-list.component';
 import { TableModule } from 'primeng/table';
+import { WebSocketService } from './service/web-socket.service';
+import { ToastModule } from 'primeng/toast';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
@@ -51,10 +53,9 @@ const routes: Routes = [
     ListboxModule,
     ButtonModule,
     TableModule,
+    ToastModule,
   ],
-  providers: [
-    []
-  ],
+  providers: [WebSocketService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

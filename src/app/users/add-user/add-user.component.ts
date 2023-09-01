@@ -27,7 +27,14 @@ export class AddUserComponent implements OnInit {
       { name: 'Can Read Users', code: 'CAN_READ_USERS' },
       { name: 'Can Create Users', code: 'CAN_CREATE_USERS' },
       { name: 'Can Delete Users', code: 'CAN_DELETE_USERS' },
-      { name: 'Can Update Users', code: 'CAN_UPDATE_USERS' }
+      { name: 'Can Update Users', code: 'CAN_UPDATE_USERS' },
+
+      { name: 'Can Create Machines', code: 'CAN_CREATE_MACHINES' },
+      { name: 'Can Start Machines', code: 'CAN_START_MACHINES' },
+      { name: 'Can Restart Machines', code: 'CAN_RESTART_MACHINES' },
+      { name: 'Can Search Machines', code: 'CAN_SEARCH_MACHINES' },
+      { name: 'Can Destroy Machines', code: 'CAN_DESTROY_MACHINES' },
+      { name: 'Can Stop Machines', code: 'CAN_STOP_MACHINES' },
     ];
 
     
