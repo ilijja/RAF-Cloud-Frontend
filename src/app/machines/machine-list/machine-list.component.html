@@ -1,5 +1,23 @@
 <div class="container">
 
+<form [formGroup]="searchMachineForm" (ngSubmit)="onSubmitSearch()" id="styled-form">
+
+   <div class="form-items">
+            <span class="p-float-label">
+                <input pInputText id="name" formControlName="name" />
+                <label htmlFor="name">Name</label>
+            </span>
+            <span class="p-float-label">
+                <p-dropdown [options]="statuses" formControlName="status" placeholder="Select status" [showClear]="true" optionLabel="name"></p-dropdown>
+            </span>
+            <p-calendar placeholder="Date From" formControlName="dateFrom"></p-calendar>
+            <p-calendar placeholder="Date To" formControlName="dateTo"></p-calendar>
+        <p-button type="submit" label="Search"></p-button>
+   </div>
+    
+    </form>
+
+
 <div class="card">
     <p-table [value]="machines" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
@@ -8,19 +26,30 @@
                 <th>Active</th>
                 <th>Status</th>
                 <th>Actions</th>
+                <th>Schedule</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-machine>
-            <tr>
+            <tr *ngIf="machine.active">
                 <td>{{machine.name}}</td>
                 <td>{{machine.active}}</td>
                 <td><span *ngIf="!loading">{{machine.status}}</span> <i *ngIf="loading" class="pi pi-spin pi-spinner" style="font-size: 0.8rem"></i></td>
                 <td>
                     <p-toast></p-toast>
-                    <p-button *ngIf="machine.active" icon="pi pi-play" class="btn round-button" (click)="startMachine(machine)"></p-button>
-                    <p-button *ngIf="machine.active" icon="pi pi-stop" class="btn round-button" (click)="stopMachine(machine)"></p-button>
-                    <p-button *ngIf="machine.active" icon="pi pi-refresh" class="btn round-button" (click)="restartMachine(machine)"></p-button>
-                    <p-button *ngIf="machine.active" icon="pi pi-trash" class="btn round-button" (click)="destroyMachine(machine)"></p-button> 
+                    <p-button icon="pi pi-play" class="btn round-button" (click)="startMachine(machine)"></p-button>
+                    <p-button icon="pi pi-stop" class="btn round-button" styleClass="p-button-secondary" (click)="stopMachine(machine)"></p-button>
+                    <p-button icon="pi pi-refresh" class="btn round-button" styleClass="p-button-success" (click)="restartMachine(machine)"></p-button>
+                    <p-button icon="pi pi-trash" class="btn round-button" styleClass="p-button-danger" (click)="destroyMachine(machine)"></p-button> 
+                </td>
+                <td>
+                    <p-calendar appendTo="body" 
+                    [(ngModel)]="scheduleDates[machine.id]" 
+                    [showTime]="true" 
+                    [showClear]="true" 
+                    placeholder="Schedule" 
+                    [showSeconds]="true"
+                    (ngModelChange)="onDateChange(machine.id, $event)">
+        </p-calendar>
                 </td>
             </tr>
         </ng-template>

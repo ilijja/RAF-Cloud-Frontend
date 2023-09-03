@@ -18,16 +18,21 @@ import { MenubarModule } from 'primeng/menubar';
 import { MenuItem, MessageService } from 'primeng/api';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateMachineComponent } from './machines/create-machine/create-machine.component';
-import { ExceptionComponent } from './machines/exception/exception.component';
 import { MachineListComponent } from './machines/machine-list/machine-list.component';
 import { TableModule } from 'primeng/table';
 import { WebSocketService } from './service/web-socket.service';
 import { ToastModule } from 'primeng/toast';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { ErrorsComponent } from './machines/errors/errors.component';
+import { NavComponent } from './nav/nav.component';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'edit-user/:id', component: EditUserComponent, canActivate: [AuthGuard] },
   { path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard] },
+  { path: 'errors', component: ErrorsComponent, canActivate: [AuthGuard] },
 
 
 ];
@@ -38,7 +43,7 @@ const routes: Routes = [
     LoginComponent,
     UserListComponent, 
     EditUserComponent, 
-    AddUserComponent, CreateMachineComponent, ExceptionComponent, MachineListComponent,
+    AddUserComponent, CreateMachineComponent, MachineListComponent, ErrorsComponent, NavComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -54,10 +59,14 @@ const routes: Routes = [
     ButtonModule,
     TableModule,
     ToastModule,
+    CalendarModule,
+    InputTextModule,
+    DropdownModule
   ],
   providers: [WebSocketService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
+
 
 }

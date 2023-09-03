@@ -17,7 +17,19 @@ export class AuthService {
   }
 
   register(userData: { firstname: string, lastname: string, username: string, password: string, email: string}): Observable<any> {
-    const roles: String[] = ["CAN_CREATE_USERS", "CAN_UPDATE_USERS", "CAN_DELETE_USERS", "CAN_READ_USERS"];
+    const roles: String[] = [
+      "CAN_CREATE_USERS", 
+      "CAN_UPDATE_USERS", 
+      "CAN_DELETE_USERS", 
+      "CAN_READ_USERS",
+      "CAN_CREATE_MACHINES", 
+      "CAN_RESTART_MACHINES", 
+      "CAN_START_MACHINES", 
+      "CAN_DESTROY_MACHINES", 
+      "CAN_STOP_MACHINES", 
+      "CAN_SEARCH_MACHINES"
+  ];
+  
     const user = {...userData, roles};
     return this.http.post(`${this.baseUrl}/register`, user);
   }

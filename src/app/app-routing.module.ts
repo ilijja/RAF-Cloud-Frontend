@@ -7,7 +7,7 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MachineListComponent } from './machines/machine-list/machine-list.component';
 import { CreateMachineComponent } from './machines/create-machine/create-machine.component';
-import { ExceptionComponent } from './machines/exception/exception.component';
+import { ErrorsComponent } from './machines/errors/errors.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, 
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard]},
   { path: 'machines', component: MachineListComponent, canActivate: [AuthGuard] },
   { path: 'add-machine', component: CreateMachineComponent, canActivate: [AuthGuard] },
-  { path: 'errors', component: ExceptionComponent, canActivate: [AuthGuard] }
+  { path: 'errors', component: ErrorsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
