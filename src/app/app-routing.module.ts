@@ -8,6 +8,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { MachineListComponent } from './machines/machine-list/machine-list.component';
 import { CreateMachineComponent } from './machines/create-machine/create-machine.component';
 import { ErrorsComponent } from './machines/errors/errors.component';
+import { NavComponent } from './nav/nav.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, 

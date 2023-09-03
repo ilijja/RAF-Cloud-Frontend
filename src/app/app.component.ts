@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 
 @Component({
@@ -12,5 +12,14 @@ export class AppComponent {
   title = 'cloud-front';
     
 
+  showNav = true;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showNav = !event.urlAfterRedirects.includes('login');
+      }
+    });
+  }
 
 }
